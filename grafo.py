@@ -135,7 +135,7 @@ class Vertice:
         print(f"Vizinhos da cidade {self.nomeCidade}")
         print('')
 
-        vizinhos_ordenacao = sorted(self.vizinhanca, key=lambda ordenacao: ordenacao[1])
+        vizinhos_ordenacao = sorted(self.vizinhanca, key=Vertice.ordenar_vizinho)
         for vizinhos, distancia in vizinhos_ordenacao:
             print(f'Nome vizinho : {vizinhos.nomeCidade} \nDistancia : {distancia} km ')
 
@@ -148,6 +148,10 @@ class Vertice:
 
     def info_vertice(self):
         print(f'\nCidade: {self.nomeCidade}')
+
+    @staticmethod    
+    def ordenar_vizinho(vizinho):
+        return vizinho[1] 
 
 class Aresta:
     def __init__(self, cidade1, cidade2, distancia: int):
